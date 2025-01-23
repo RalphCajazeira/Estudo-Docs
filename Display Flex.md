@@ -1,6 +1,8 @@
-# Flexbox: As 10 Propriedades Mais Usadas
+# Guia Completo de Flexbox
 
-O Flexbox (\`display: flex\`) é uma ferramenta poderosa para criar layouts responsivos e flexíveis. Este guia cobre as 10 propriedades mais usadas com exemplos e explicações para ajudá-lo a dominar o Flexbox.
+O Flexbox (\`display: flex\`) é uma ferramenta essencial no CSS para criar layouts modernos e responsivos. Este guia cobre as propriedades mais usadas e suas aplicações práticas.
+
+---
 
 ## 1. `display: flex`
 Ativa o Flexbox no contêiner e transforma seus filhos em itens flexíveis.
@@ -34,7 +36,7 @@ Valores comuns:
 Alinha os itens ao longo do eixo principal.
 
 Valores comuns:
-- `flex-start`: Alinha os itens no início.
+- `flex-start` (padrão): Alinha os itens no início.
 - `center`: Centraliza os itens.
 - `flex-end`: Alinha os itens no final.
 - `space-between`: Espaço igual entre os itens.
@@ -102,25 +104,50 @@ Valores comuns:
 
 ---
 
-## 7. `flex`
+## 7. `gap`
+Define o espaçamento entre os itens flexíveis, substituindo margens individuais.
+
+```css
+.container {
+  display: flex;
+  gap: 16px; /* Espaço entre itens */
+}
+```
+
+---
+
+## 8. `flex`
 Define como um item flexível cresce, encolhe ou ocupa espaço disponível.
 
 Formato: `flex: grow shrink basis`.
+
+- **grow**: Define a proporção de crescimento do item em relação aos outros. Um valor maior faz o item ocupar mais espaço.
+- **shrink**: Define a proporção de encolhimento do item quando o espaço é reduzido. Um valor `0` impede o encolhimento.
+- **basis**: Define o tamanho inicial do item antes do ajuste. Pode ser um valor fixo (como `200px`) ou `auto`.
+
+### Exemplo de Uso:
+```css
+.item {
+  flex: 1 0 200px; /* Cresce proporcionalmente, não encolhe, inicia com 200px */
+}
+
+.item-small {
+  flex: 0 1 100px; /* Não cresce, encolhe se necessário, inicia com 100px */
+}
+
+.item-grow {
+  flex: 2 1 auto; /* Cresce duas vezes mais que os outros, encolhe, tamanho automático */
+}
+```
 
 Valores comuns:
 - `flex: 1`: O item cresce proporcionalmente para preencher o espaço.
 - `flex: 0 1 auto`: Comportamento padrão.
 - `flex: none`: Desabilita comportamento flexível.
 
-```css
-.item {
-  flex: 1;
-}
-```
-
 ---
 
-## 8. `order`
+## 9. `order`
 Controla a ordem de exibição dos itens, independentemente da ordem no HTML.
 
 ```css
@@ -129,18 +156,6 @@ Controla a ordem de exibição dos itens, independentemente da ordem no HTML.
 }
 .item:last-child {
   order: 1;
-}
-```
-
----
-
-## 9. `gap`
-Define o espaçamento entre os itens flexíveis.
-
-```css
-.container {
-  display: flex;
-  gap: 16px;
 }
 ```
 
@@ -156,6 +171,32 @@ Valores comuns:
 ```css
 .item {
   align-self: flex-end;
+}
+```
+
+---
+
+## 11. `list-style` (com Flexbox)
+Embora não seja uma propriedade diretamente de Flexbox, pode ser útil para estilizar listas dentro de contêineres flexíveis.
+
+```css
+.flex-list {
+  display: flex;
+  gap: 10px;
+  list-style: none; /* Remove marcadores */
+}
+```
+
+---
+
+## 12. `min-width` e `max-width`
+Controlam os tamanhos mínimos e máximos dos itens flexíveis.
+
+```css
+.item {
+  flex: 1;
+  min-width: 100px;
+  max-width: 300px;
 }
 ```
 
@@ -180,4 +221,4 @@ Valores comuns:
 }
 ```
 
-Com essas 10 propriedades, você pode criar layouts flexíveis e responsivos com facilidade! 🚀
+Com este guia, você terá controle total sobre layouts flexíveis e responsivos com Flexbox! 🚀
